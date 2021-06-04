@@ -1,6 +1,6 @@
 {
   "name": "next-ntms",
-  "version": "0.0.61",
+  "version": "0.0.8",
   "description": "A dead simple way to add and collaborate on your Next.js site's translations with the Notion API and Deepl",
   "author": "arnaudDerbey",
   "license": "MIT",
