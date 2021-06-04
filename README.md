@@ -18,8 +18,8 @@ Turn your **N**otion into a powerful, collaborative and automatic **T**ranslatio
 # Drawbacks 😿
 
 - next-ntms rely on `[getStaticProps](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation)` i.e: translation fetching cannot be use in combination with `[getServerSideProps](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering)` as Next.js sadly don't allow this for now ⇒ see [[#11424](https://github.com/vercel/next.js/discussions/11424)]
-  While it's still possible to use the `[getStaticTranslations](https://www.ntms.dev/getstatictranslations)` function inside your server side logic, we do not advice to do so because of the speed of the notion api.
-  A workaround would be to encapsulate all you components translations inside small databases and use your `[_app](https://nextjs.org/docs/advanced-features/custom-app)` `[getStaticProps](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation)` to fetch them.
+  While it's still possible to use the `[getStaticTranslations(https://www.ntms.dev/getstatictranslations)]` function inside your server side logic, we do not advice to do so because of the speed of the notion api.
+  A workaround would be to encapsulate all you components translations inside small databases and use your `[_app(https://nextjs.org/docs/advanced-features/custom-app)]` `[getStaticProps](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation)` to fetch them.
 - As the notion API is still in beta and only return text-like blocks, this library is not (yet) suitable for a full and complex translated content management system.
 
 # Getting started 💨
@@ -53,6 +53,8 @@ databaseName
 |----------------|-------------------|------------------------|
 | translationKey | ntms is awesome ! | ntms est fantastique ! |
 
+/next.config.js
+
 ```jsx
 module.exports = {
   i18n: {
@@ -69,6 +71,8 @@ module.exports = {
 }
 ```
 
+/pages/translatedPage.js
+
 ```jsx
 import {
   withNotionTranslation,
@@ -82,10 +86,10 @@ const TranslatedPage = () => {
     <div>
       <h1>{t('databaseName.translationKey')}</h1>
       {/*
-		will display either "ntms is awesome !"
-		or "ntms est fantastique !"
-		depending on the locale
-*/}
+    will display either "ntms is awesome !"
+    or "ntms est fantastique !"
+    depending on the locale
+    */}
     </div>
   )
 }
