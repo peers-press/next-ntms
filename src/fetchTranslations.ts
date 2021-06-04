@@ -7,11 +7,11 @@ const fetchTranslations = async (
   context: GetStaticPropsContext
 ) => {
   const fetcher = (await import('ntms')).fetchTranslations
-  const translations = await fetcher(databases, {
+  const config = getConfig().serverRuntimeConfig.ntms || {}
+  return await fetcher(databases, {
     locale: context.locale,
-    defaultLocale: context.defaultLocale,
-    config: getConfig().serverRuntimeConfig.ntms
+    defaultLocale: config.defaultLocale,
+    deepl: config.deepl
   })
-  translations
 }
 export default fetchTranslations

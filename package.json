@@ -1,13 +1,26 @@
 {
   "name": "next-ntms",
-  "version": "0.0.8",
+  "version": "0.0.94",
   "description": "A dead simple way to add and collaborate on your Next.js site's translations with the Notion API and Deepl",
   "author": "arnaudDerbey",
+  "homepage": "ntms.dev",
   "license": "MIT",
-  "repository": "arnaudDerbey/next-ntms",
+  "repository": "peers-press/next-ntms",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.ts",
+  "keywords": [
+    "i18n",
+    "notion-api",
+    "nextjs",
+    "translations management",
+    "react",
+    "notion",
+    "headless tms"
+  ],
+  "bugs": {
+    "url": "https://github.com/peers-press/next-ntms/issues"
+  },
   "engines": {
     "node": ">=10"
   },
@@ -53,7 +66,7 @@
     "gh-pages": "^2.2.0",
     "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
-    "ntms": "0.0.16",
+    "ntms": "0.0.2",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

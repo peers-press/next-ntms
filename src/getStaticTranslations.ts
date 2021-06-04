@@ -1,15 +1,10 @@
 import { database_id } from './types'
 import { GetStaticPropsContext } from 'next'
-import getConfig from 'next/config'
+import fetchTranslations from './fetchTranslations'
 
 const getStaticTranslations = (...args: database_id[]) => {
   return async (context: GetStaticPropsContext) => {
-    const fetchTranslations = (await import('ntms')).fetchTranslations
-    const translations = await fetchTranslations(args, {
-      locale: context.locale,
-      defaultLocale: context.defaultLocale,
-      config: getConfig().serverRuntimeConfig.ntms
-    })
+    const translations = await fetchTranslations(args, context)
     return {
       props: {
         translations
