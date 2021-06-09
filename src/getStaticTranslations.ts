@@ -9,7 +9,7 @@ const getStaticTranslations = (...args: database_id[]) => {
       props: {
         translations
       },
-      revalidate: 40
+      revalidate: 10
     }
   }
 }

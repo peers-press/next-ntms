@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
-import renderRichText from './renderRichText'
 import Context from './context'
 import { customTranslationsDictonnary } from './types'
-
+import { mustachingOptions } from './types'
+import t from './t'
 const withTranslations = (
   Component: any,
   translations?: customTranslationsDictonnary
@@ -15,20 +15,15 @@ const withTranslations = (
       props.translations || {},
       (translations && translations[locale]) || {}
     )
-    const t = React.useCallback(
-      (path) => {
-        const [database, key] = path.split('.')
-        const translation = allTranslations[database]?.[key]
-        if (!translation) return path
-        return typeof translation === 'string'
-          ? String(translation)
-          : renderRichText(translation)
+    const tfunc = React.useCallback(
+      (path, options?: mustachingOptions | boolean, plural?: boolean) => {
+        return t(allTranslations, path, options, plural)
       },
       [locale]
     )
     return (
       <Context.Provider
-        value={{ translations: props.translations || {}, t, locale }}
+        value={{ translations: props.translations || {}, t: tfunc, locale }}
       >
         <Component {...props} />
       </Context.Provider>

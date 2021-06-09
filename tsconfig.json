@@ -1,4 +1,7 @@
 {
+  "typeAcquisition": {
+    "include": ["jest", "ts-jest"]
+  },
   "compilerOptions": {
     "outDir": "dist",
     "module": "esnext",

@@ -1,14 +1,20 @@
 import * as React from 'react'
-import { RichText } from './types'
-const renderRichText = (data: RichText[]): JSX.Element[] => {
+import templating from './templating'
+import { RichText, mustachingOptions } from './types'
+const renderRichText = (
+  data: RichText[],
+  options?: mustachingOptions,
+  plural?: boolean
+): JSX.Element[] => {
   const getChildren = (
     { annotations, plain_text, href }: RichText,
     i: number
   ) => {
+    plain_text = templating(plain_text, options, plural)
     try {
       const { bold, code, color, italic, strikethrough, underline } =
         annotations
-      let children = <span>{plain_text}</span>
+      let children = <React.Fragment>{plain_text}</React.Fragment>
 
       if (bold) {
         children = <b>{children}</b>
@@ -30,7 +36,7 @@ const renderRichText = (data: RichText[]): JSX.Element[] => {
       if (color && color !== 'default') {
         children = <mark data-color={color}>{children}</mark>
       }
-      if (href !== null) {
+      if (!!href && href !== null) {
         children = (
           <a target='_blank' href={href}>
             {children}

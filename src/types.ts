@@ -54,10 +54,17 @@ export interface databaseDictionnary {
 
 export interface ntmsContext {
   translations: translationsDictonnary
-  t: (path: string) => string | Element[]
+  t: (
+    path: string,
+    options?: mustachingOptions | boolean,
+    plural?: boolean
+  ) => string | JSX.Element[]
   locale: string | undefined
 }
 
 export interface customTranslationsDictonnary {
   [lang: string]: translationsDictonnary
+}
+export interface mustachingOptions {
+  [key: string]: string
 }
