@@ -1,7 +1,7 @@
 {
   "name": "next-ntms",
-  "version": "0.0.982",
-  "description": "A dead simple way to add and collaborate on your Next.js site's translations with the Notion API and Deepl",
+  "version": "0.0.986",
+  "description": "A dead simple way to add i18n to your Next.js app using the Notion API and Deepl",
   "author": "arnaudDerbey",
   "homepage": "ntms.dev",
   "license": "MIT",
@@ -16,7 +16,7 @@
     "translations management",
     "react",
     "notion",
-    "headless tms"
+    "headless TMS"
   ],
   "bugs": {
     "url": "https://github.com/peers-press/next-ntms/issues"
@@ -25,7 +25,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress",
+    "build": "microbundle-crl --format modern,cjs",
     "prepare": "run-s build",
     "postinstall": "npm install ntms@latest",
     "test": "jest",

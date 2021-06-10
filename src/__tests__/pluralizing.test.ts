@@ -26,4 +26,17 @@ describe('test pluralizing function', () => {
       "I've got ten messages"
     )
   })
+  it('should return the pluralized version of the cyrilic string ', () => {
+    expect(pluralizing('Masz 10 ((wiadomość,wiadomości)).', true)).toBe(
+      'Masz 10 wiadomości.'
+    )
+  })
+  it('should return the singular version of the chinese string ', () => {
+    expect(pluralizing('你有 1 ((信息 ,信息)).', false)).toBe('你有 1 信息.')
+  })
+  it('should return the singular version of the japanese string ', () => {
+    expect(pluralizing('1 ((メッセージ ,メッセージ)) があります。', true)).toBe(
+      '1 メッセージ があります。'
+    )
+  })
 })
