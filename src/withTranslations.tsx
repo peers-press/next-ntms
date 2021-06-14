@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import Context from './context'
 import { customTranslationsDictonnary } from './types'
-import { mustachingOptions } from './types'
+import { variables } from './types'
 import t from './t'
 const withTranslations = (
   Component: any,
@@ -15,15 +15,18 @@ const withTranslations = (
       props.translations || {},
       (translations && translations[locale]) || {}
     )
-    const tfunc = React.useCallback(
-      (path, options?: mustachingOptions | boolean, plural?: boolean) => {
-        return t(allTranslations, path, options, plural)
-      },
-      [locale]
-    )
     return (
       <Context.Provider
-        value={{ translations: props.translations || {}, t: tfunc, locale }}
+        value={{
+          translations: props.translations || {},
+          t: React.useCallback(
+            (path, options?: variables | boolean, plural?: boolean) => {
+              return t(allTranslations, path, options, plural)
+            },
+            [locale]
+          ),
+          locale
+        }}
       >
         <Component {...props} />
       </Context.Provider>

@@ -56,7 +56,7 @@ export interface ntmsContext {
   translations: translationsDictonnary
   t: (
     path: string,
-    options?: mustachingOptions | boolean,
+    options?: variables | boolean,
     plural?: boolean
   ) => string | JSX.Element[]
   locale: string | undefined
@@ -65,6 +65,6 @@ export interface ntmsContext {
 export interface customTranslationsDictonnary {
   [lang: string]: translationsDictonnary
 }
-export interface mustachingOptions {
+export interface variables {
   [key: string]: string
 }
