@@ -1,9 +1,9 @@
 import * as React from 'react'
 import templating from './templating'
-import { RichText, mustachingOptions } from './types'
+import { RichText, variables } from './types'
 const renderRichText = (
   data: RichText[],
-  options?: mustachingOptions,
+  options?: variables,
   plural?: boolean
 ): JSX.Element[] => {
   const getChildren = (
